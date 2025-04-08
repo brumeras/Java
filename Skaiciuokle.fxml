@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.emiolija.SkaiciuotiController">
+
+   <children>
+      <Pane prefHeight="132.0" prefWidth="1262.0" style="-fx-background-color: #506e4d;">
+         <children>
+            <Label layoutX="246.0" layoutY="1.0" prefHeight="38.0" prefWidth="381.0" text="Būsto paskolos skaičiuoklė" textFill="WHITE">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+
+      <Pane prefHeight="126.0" prefWidth="1206.0">
+         <children>
+            <Label layoutX="182.0" layoutY="12.0" text="Įveskite pageidaujamos paskolos sumą:" />
+            <TextField fx:id="paskolosSuma" layoutX="402.0" layoutY="5.0" prefHeight="32.0" prefWidth="149.0" />
+         </children>
+      </Pane>
+
+      <Pane prefHeight="199.0" prefWidth="900.0">
+         <children>
+            <TextField fx:id="metai" layoutX="176.0" layoutY="31.0" />
+            <TextField fx:id="menesiai" layoutX="544.0" layoutY="31.0" />
+            <Label layoutX="200.0" layoutY="6.0" text="Įveskite metų kiekį:" />
+            <Label layoutX="560.0" layoutY="6.0" text="Įveskite mėnesių kiekį:" />
+
+            <Label fx:id="klaiduPranesimas" layoutX="200.0" layoutY="200.0" textFill="RED" />
+
+            <TextField fx:id="metinisProcentas" layoutX="357.0" layoutY="82.0" />
+            <Label layoutX="381.0" layoutY="56.0" prefHeight="17.0" prefWidth="100.0" text="Metinis procentas:" />
+         </children>
+      </Pane>
+
+      <!-- Naujas skydelis su atidėjimo pasirinkimu -->
+      <Pane prefHeight="184.0" prefWidth="1283.0" style="-fx-background-color: #e0e0e0;">
+         <children>
+            <Label layoutX="77.0" layoutY="14.0" text="Norite atidėti įmokas?" />
+            <Button fx:id="atidetiTaip" layoutX="200.0" layoutY="10.0" onAction="#atidetiImokas" text="Taip" />
+            <Button fx:id="atidetiNe" layoutX="260.0" layoutY="10.0" onAction="#griztiBeAtidejimo" prefHeight="25.0" prefWidth="38.0" text="Ne" />
+
+            <Label fx:id="atidetiLabel" layoutX="30.0" layoutY="50.0" text="Atidėjimo trukmė:" visible="false" />
+            <TextField fx:id="atidetiMetai" layoutX="150.0" layoutY="50.0" promptText="Metai" visible="false" />
+            <TextField fx:id="atidetiMenesiai" layoutX="250.0" layoutY="50.0" promptText="Mėnesiai" visible="false" />
+
+            <Button fx:id="patvirtintiAtidejima" layoutX="400.0" layoutY="50.0" onAction="#patvirtintiAtidejima" text="Patvirtinti" visible="false" />
+
+            <Button fx:id="mygtukasSkaiciuoti" layoutX="491.0" layoutY="39.0" onAction="#onSkaiciuotiButtonClick" prefHeight="43.0" prefWidth="149.0" text="Skaičiuoti">
+               <font>
+                  <Font size="22.0" />
+               </font></Button>
+            <Label layoutX="665.0" layoutY="66.0" prefHeight="17.0" prefWidth="100.0" text="Mėnesio įmoka:" />
+         </children>
+      </Pane>
+
+            <Pane prefHeight="367.0" prefWidth="1261.0">
+         <children>
+            <LineChart fx:id="grafikas" layoutX="33.0" layoutY="9.0" prefHeight="263.0" prefWidth="863.0">
+               <xAxis>
+                  <NumberAxis label="Mėnesiai" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis label="Mėnesinė įmoka (€)" />
+               </yAxis>
+            </LineChart>
+         </children>
+      </Pane>
+      <TableView fx:id="duomenuLentele" prefHeight="311.0" prefWidth="1264.0">
+         <columns>
+            <TableColumn fx:id="stulpelisMenesis" text="Mėnesis" />
+            <TableColumn fx:id="stulpelisBendra" text="Bendra Įmoka" />
+            <TableColumn fx:id="stulpelisPalukanos" text="Palūkanos" />
+            <TableColumn fx:id="stulpelisPagrindine" text="Paskolos Grąžinimas" />
+         </columns>
+      </TableView>
+   </children>
+</VBox>
